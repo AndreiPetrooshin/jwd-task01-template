@@ -9,7 +9,10 @@ public class Validator {
 
     public static <E> boolean criteriaValidator(Criteria<E> criteria) {
         Map<E, Object> map = criteria.getCriteria();
-        ValidatorAppliance validator = ValidatorFactory.validator(criteria.getApplianceType());
+        ValidatorAppliance validator = null;
+        if (criteria.getApplianceType() != null) {
+            validator = ValidatorFactory.validator(criteria.getApplianceType());
+        }
         return validator != null && validator.validate(map);
     }
 

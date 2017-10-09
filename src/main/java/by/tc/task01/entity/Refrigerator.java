@@ -1,9 +1,6 @@
 package by.tc.task01.entity;
 
-import by.tc.task01.entity.criteria.SearchCriteria;
-
 import java.io.Serializable;
-import java.util.Properties;
 
 public class Refrigerator extends Appliance implements Serializable{
 
@@ -109,20 +106,4 @@ public class Refrigerator extends Appliance implements Serializable{
                 '}';
     }
 
-    public static Appliance create(Properties properties) {
-        Refrigerator refrigerator = new Refrigerator();
-        refrigerator.setPowerConsumption(Integer.parseInt(properties.getProperty(
-                SearchCriteria.Refrigerator.POWER_CONSUMPTION.toString())));
-        refrigerator.setWeight(Integer.parseInt(properties.getProperty(
-                SearchCriteria.Refrigerator.WEIGHT.toString())));
-        refrigerator.setFreezerCapacity(Integer.parseInt(properties.getProperty(
-                SearchCriteria.Refrigerator.FREEZER_CAPACITY.toString())));
-        refrigerator.setOverallCapacity(Double.parseDouble(properties.getProperty(
-                SearchCriteria.Refrigerator.FREEZER_CAPACITY.toString())));
-        refrigerator.setHeight(Integer.parseInt(properties.getProperty(
-                SearchCriteria.Refrigerator.HEIGHT.toString())));
-        refrigerator.setWidth(Integer.parseInt(properties.getProperty(
-                SearchCriteria.Refrigerator.WIDTH.toString())));
-        return refrigerator;
-    }
 }

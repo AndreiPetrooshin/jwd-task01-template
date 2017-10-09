@@ -104,21 +104,4 @@ public class VacuumCleaner extends Appliance implements Serializable {
                 ", cleaningWidth=" + cleaningWidth +
                 '}';
     }
-
-    public static Appliance create(Properties properties) {
-        VacuumCleaner vacuumCleaner = new VacuumCleaner();
-        vacuumCleaner.setPowerConsumption(Integer.parseInt(properties.getProperty(
-                SearchCriteria.VacuumCleaner.POWER_CONSUMPTION.toString())));
-        vacuumCleaner.setFilterType(properties.getProperty(
-                SearchCriteria.VacuumCleaner.FILTER_TYPE.toString()));
-        vacuumCleaner.setBagType(properties.getProperty(
-                SearchCriteria.VacuumCleaner.BAG_TYPE.toString()));
-        vacuumCleaner.setWandType(properties.getProperty(
-                SearchCriteria.VacuumCleaner.WAND_TYPE.toString()));
-        vacuumCleaner.setMotorSpeedRegulation(Integer.parseInt(properties.getProperty(
-                SearchCriteria.VacuumCleaner.MOTOR_SPEED_REGULATION.toString())));
-        vacuumCleaner.setCleaningWidth(Integer.parseInt(properties.getProperty(
-                SearchCriteria.VacuumCleaner.CLEANING_WIDTH.toString())));
-        return vacuumCleaner;
-    }
 }

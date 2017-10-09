@@ -1,6 +1,8 @@
 package by.tc.task01.dao.impl;
 
 import by.tc.task01.dao.ApplianceDAO;
+import by.tc.task01.dao.command.ApplianceDirector;
+import by.tc.task01.dao.command.Command;
 import by.tc.task01.entity.*;
 import by.tc.task01.entity.criteria.Criteria;
 import by.tc.task01.entity.criteria.SearchCriteria;
@@ -13,14 +15,22 @@ import java.util.regex.Pattern;
 
 public class ApplianceDAOImpl implements ApplianceDAO {
 
+    private ApplianceDirector applianceDirector;
+
     @Override
     public <E> Appliance find(Criteria<E> criteria) {
-        try (BufferedReader reader = getReader("src\\main\\resources\\appliances_db.txt")) {
+
+        String filePath = "src\\main\\resources\\appliances_db.txt";
+
+        try (BufferedReader reader = getReader(filePath)) {
+
             String correctString = getCorrectString(reader, criteria);
             Properties properties = getProperties(correctString);
             String applianceName = criteria.getApplianceType();
-            if (properties != null && !applianceName.isEmpty()) {
-                return ApplianceFactory.getAppliance(applianceName, properties);
+            applianceDirector = new ApplianceDirector();
+            if (properties != null && applianceName != null) {
+                Command command = applianceDirector.getCommand(applianceName);
+                return command.create(properties);
             }
         } catch (IOException e) {
             e.printStackTrace();

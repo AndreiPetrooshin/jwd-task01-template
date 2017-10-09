@@ -1,9 +1,7 @@
 package by.tc.task01.entity;
 
-import by.tc.task01.entity.criteria.SearchCriteria;
 
 import java.io.Serializable;
-import java.util.Properties;
 
 public class Speakers extends Appliance implements Serializable {
 
@@ -80,19 +78,5 @@ public class Speakers extends Appliance implements Serializable {
                 ", frequencyRange='" + frequencyRange + '\'' +
                 ", cordLength=" + cordLength +
                 '}';
-    }
-
-    public static Appliance create(Properties properties) {
-        Speakers speakers = new Speakers();
-        speakers.setPowerConsumption(Integer.parseInt(properties.getProperty(
-                SearchCriteria.Speakers.POWER_CONSUMPTION.toString())));
-        speakers.setNumberOfSpeakers(Integer.parseInt(properties.getProperty(
-                SearchCriteria.Speakers.NUMBER_OF_SPEAKERS.toString())));
-        speakers.setFrequencyRange(properties.getProperty(
-                SearchCriteria.Speakers.FREQUENCY_RANGE.toString()));
-        speakers.setCordLength(Integer.parseInt(properties.getProperty(
-                SearchCriteria.Speakers.CORD_LENGTH.toString())));
-        return speakers;
-
     }
 }
