@@ -17,16 +17,16 @@ public class LaptopValidator implements ValidatorAppliance {
                 String os = (String) criteria.get(Laptop.OS);
             }
             if(criteria.containsKey(Laptop.MEMORY_ROM)) {
-                int memory = (int) criteria.get(Laptop.MEMORY_ROM);
+                double memory = Double.parseDouble(criteria.get(Laptop.MEMORY_ROM).toString());
             }
             if(criteria.containsKey(Laptop.SYSTEM_MEMORY)) {
-                int sysMemory = (int) criteria.get(Laptop.SYSTEM_MEMORY);
+                double sysMemory = Double.parseDouble(criteria.get(Laptop.SYSTEM_MEMORY).toString());
             }
             if(criteria.containsKey(Laptop.CPU)) {
                 double cpu = Double.parseDouble(criteria.get(Laptop.CPU).toString());
             }
             if(criteria.containsKey(Laptop.DISPLAY_INCHS)) {
-                int display = (int) criteria.get(Laptop.DISPLAY_INCHS);
+                double display = Double.parseDouble(criteria.get(Laptop.DISPLAY_INCHS).toString());
             }
             return true;
         }

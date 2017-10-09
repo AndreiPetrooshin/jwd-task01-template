@@ -11,7 +11,7 @@ public class TabletPC extends Appliance implements Serializable{
 
     private int batteryCapacity;
     private int displayInches;
-    private int memoryRom;
+    private int memoryROM;
     private int flashMemoryCapacity;
     private String color;
 
@@ -34,12 +34,12 @@ public class TabletPC extends Appliance implements Serializable{
         this.displayInches = displayInches;
     }
 
-    public int getMemoryRom() {
-        return memoryRom;
+    public int getMemoryROM() {
+        return memoryROM;
     }
 
-    public void setMemoryRom(int memoryRom) {
-        this.memoryRom = memoryRom;
+    public void setMemoryROM(int memoryROM) {
+        this.memoryROM = memoryROM;
     }
 
     public int getFlashMemoryCapacity() {
@@ -67,7 +67,7 @@ public class TabletPC extends Appliance implements Serializable{
 
         if (batteryCapacity != tabletPC.batteryCapacity) return false;
         if (displayInches != tabletPC.displayInches) return false;
-        if (memoryRom != tabletPC.memoryRom) return false;
+        if (memoryROM != tabletPC.memoryROM) return false;
         if (flashMemoryCapacity != tabletPC.flashMemoryCapacity) return false;
         return color != null ? color.equals(tabletPC.color) : tabletPC.color == null;
     }
@@ -76,7 +76,7 @@ public class TabletPC extends Appliance implements Serializable{
     public int hashCode() {
         int result = batteryCapacity;
         result = 31 * result + displayInches;
-        result = 31 * result + memoryRom;
+        result = 31 * result + memoryROM;
         result = 31 * result + flashMemoryCapacity;
         result = 31 * result + (color != null ? color.hashCode() : 0);
         return result;
@@ -87,7 +87,7 @@ public class TabletPC extends Appliance implements Serializable{
         return "TabletPC{" +
                 "batteryCapacity=" + batteryCapacity +
                 ", displayInches=" + displayInches +
-                ", memoryRom=" + memoryRom +
+                ", memoryROM=" + memoryROM +
                 ", flashMemoryCapacity=" + flashMemoryCapacity +
                 ", color='" + color + '\'' +
                 '}';
@@ -99,7 +99,7 @@ public class TabletPC extends Appliance implements Serializable{
                 SearchCriteria.TabletPC.BATTERY_CAPACITY.toString())));
         tabletPC.setDisplayInches(Integer.parseInt(properties.getProperty(
                 SearchCriteria.TabletPC.DISPLAY_INCHES.toString())));
-        tabletPC.setMemoryRom(Integer.parseInt(properties.getProperty(
+        tabletPC.setMemoryROM(Integer.parseInt(properties.getProperty(
                 SearchCriteria.TabletPC.MEMORY_ROM.toString())));
         tabletPC.setFlashMemoryCapacity(Integer.parseInt(properties.getProperty(
                 SearchCriteria.TabletPC.FLASH_MEMORY_CAPACITY.toString())));

@@ -11,7 +11,7 @@ public class Laptop extends Appliance implements Serializable{
 
 	private double batteryCapacity;
 	private String os;
-	private int memoryRom;
+	private int memoryROM;
 	private int systemMemory;
 	private double cpu;
 	private int displayInchs;
@@ -35,12 +35,12 @@ public class Laptop extends Appliance implements Serializable{
         this.os = os;
     }
 
-    public int getMemoryRom() {
-        return memoryRom;
+    public int getMemoryROM() {
+        return memoryROM;
     }
 
-    public void setMemoryRom(int memoryRom) {
-        this.memoryRom = memoryRom;
+    public void setMemoryROM(int memoryROM) {
+        this.memoryROM = memoryROM;
     }
 
     public int getSystemMemory() {
@@ -75,7 +75,7 @@ public class Laptop extends Appliance implements Serializable{
         Laptop laptop = (Laptop) o;
 
         if (Double.compare(laptop.batteryCapacity, batteryCapacity) != 0) return false;
-        if (memoryRom != laptop.memoryRom) return false;
+        if (memoryROM != laptop.memoryROM) return false;
         if (systemMemory != laptop.systemMemory) return false;
         if (Double.compare(laptop.cpu, cpu) != 0) return false;
         if (displayInchs != laptop.displayInchs) return false;
@@ -89,7 +89,7 @@ public class Laptop extends Appliance implements Serializable{
         temp = Double.doubleToLongBits(batteryCapacity);
         result = (int) (temp ^ (temp >>> 32));
         result = 31 * result + (os != null ? os.hashCode() : 0);
-        result = 31 * result + memoryRom;
+        result = 31 * result + memoryROM;
         result = 31 * result + systemMemory;
         temp = Double.doubleToLongBits(cpu);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
@@ -102,7 +102,7 @@ public class Laptop extends Appliance implements Serializable{
         return "Laptop{" +
                 "batteryCapacity=" + batteryCapacity +
                 ", os='" + os + '\'' +
-                ", memoryRom=" + memoryRom +
+                ", memoryROM=" + memoryROM +
                 ", systemMemory=" + systemMemory +
                 ", cpu=" + cpu +
                 ", displayInchs=" + displayInchs +
@@ -114,7 +114,7 @@ public class Laptop extends Appliance implements Serializable{
         laptop.setBatteryCapacity(Double.parseDouble(properties.getProperty(
                 SearchCriteria.Laptop.BATTERY_CAPACITY.toString())));
         laptop.setOs(properties.getProperty(SearchCriteria.Laptop.OS.toString()));
-        laptop.setMemoryRom(Integer.parseInt(properties.getProperty(
+        laptop.setMemoryROM(Integer.parseInt(properties.getProperty(
                 SearchCriteria.Laptop.MEMORY_ROM.toString())));
         laptop.setSystemMemory(Integer.parseInt(properties.getProperty(
                 SearchCriteria.Laptop.SYSTEM_MEMORY.toString())));

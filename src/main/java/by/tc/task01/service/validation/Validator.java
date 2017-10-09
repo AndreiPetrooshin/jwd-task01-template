@@ -9,12 +9,7 @@ public class Validator {
 
     public static <E> boolean criteriaValidator(Criteria<E> criteria) {
         Map<E, Object> map = criteria.getCriteria();
-        String applianceName = "";
-        for (Map.Entry<E, Object> entry : map.entrySet()) {
-            applianceName = entry.getKey().getClass().getSimpleName();
-            break;
-        }
-        ValidatorAppliance validator = ValidatorFactory.validator(applianceName);
+        ValidatorAppliance validator = ValidatorFactory.validator(criteria.getApplianceType());
         return validator != null && validator.validate(map);
     }
 

@@ -10,22 +10,22 @@ public class RefrigeratorValidator implements ValidatorAppliance {
     public <E> boolean validate(Map<E, Object> criteria) {
         try {
             if(criteria.containsKey(Refrigerator.POWER_CONSUMPTION)) {
-                int power = (int) criteria.get(Refrigerator.POWER_CONSUMPTION);
+                double power = Double.parseDouble(criteria.get(Refrigerator.POWER_CONSUMPTION).toString());
             }
             if(criteria.containsKey(Refrigerator.WEIGHT)) {
-                int weight =  (int)criteria.get(Refrigerator.WEIGHT);
+                double weight =  Double.parseDouble(criteria.get(Refrigerator.WEIGHT).toString());
             }
             if(criteria.containsKey(Refrigerator.FREEZER_CAPACITY)) {
-                int freezer = (int) criteria.get(Refrigerator.FREEZER_CAPACITY);
+                double freezer = Double.parseDouble(criteria.get(Refrigerator.FREEZER_CAPACITY).toString());
             }
             if(criteria.containsKey(Refrigerator.OVERALL_CAPACITY)) {
                 double overallCapacity = Double.parseDouble(criteria.get(Refrigerator.OVERALL_CAPACITY).toString());
             }
             if(criteria.containsKey(Refrigerator.HEIGHT)) {
-                int height = (int)criteria.get(Refrigerator.HEIGHT);
+                double height = Double.parseDouble(criteria.get(Refrigerator.HEIGHT).toString());
             }
             if(criteria.containsKey(Refrigerator.WIDTH)) {
-                int width = (int)criteria.get(Refrigerator.WIDTH);
+                double width = Double.parseDouble(criteria.get(Refrigerator.WIDTH).toString());
             }
             return true;
         }

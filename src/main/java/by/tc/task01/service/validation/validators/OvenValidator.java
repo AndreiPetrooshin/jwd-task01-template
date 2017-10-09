@@ -10,16 +10,16 @@ public class OvenValidator implements ValidatorAppliance {
     public <E> boolean validate(Map<E, Object> criteria) {
         try {
             if(criteria.containsKey(Oven.POWER_CONSUMPTION)) {
-                int power = (int) criteria.get(Oven.POWER_CONSUMPTION);
+                double power = Double.parseDouble(criteria.get(Oven.POWER_CONSUMPTION).toString());
             }
             if(criteria.containsKey(Oven.WEIGHT)) {
-                int weight =  (int)criteria.get(Oven.WEIGHT);
+                double weight = Double.parseDouble(criteria.get(Oven.WEIGHT).toString());
             }
             if(criteria.containsKey(Oven.CAPACITY)) {
-                int capacity = (int) criteria.get(Oven.CAPACITY);
+                double capacity = Double.parseDouble(criteria.get(Oven.CAPACITY).toString());
             }
             if(criteria.containsKey(Oven.DEPTH)) {
-                int depth = (int) criteria.get(Oven.DEPTH);
+                double depth = Double.parseDouble(criteria.get(Oven.DEPTH).toString());
             }
             if(criteria.containsKey(Oven.HEIGHT)) {
                 double height = Double.parseDouble(criteria.get(Oven.HEIGHT).toString());

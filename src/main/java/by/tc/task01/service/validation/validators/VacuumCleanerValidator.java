@@ -10,7 +10,7 @@ public class VacuumCleanerValidator implements ValidatorAppliance {
     public <E> boolean validate(Map<E, Object> criteria) {
         try {
             if(criteria.containsKey(VacuumCleaner.POWER_CONSUMPTION)) {
-                int power = (int) criteria.get(VacuumCleaner.POWER_CONSUMPTION);
+                double power = Double.parseDouble(criteria.get(VacuumCleaner.POWER_CONSUMPTION).toString());
             }
             if(criteria.containsKey(VacuumCleaner.FILTER_TYPE)) {
                 String filterType =  (String)criteria.get(VacuumCleaner.FILTER_TYPE);
@@ -22,10 +22,10 @@ public class VacuumCleanerValidator implements ValidatorAppliance {
                 String wandType = (String) criteria.get(VacuumCleaner.WAND_TYPE);
             }
             if(criteria.containsKey(VacuumCleaner.MOTOR_SPEED_REGULATION)) {
-                int motorSpeedRegulation = (int)criteria.get(VacuumCleaner.MOTOR_SPEED_REGULATION);
+                double motorSpeedRegulation = Double.parseDouble(criteria.get(VacuumCleaner.MOTOR_SPEED_REGULATION).toString());
             }
             if(criteria.containsKey(VacuumCleaner.CLEANING_WIDTH)) {
-                int cleaningWidth =(int)criteria.get(VacuumCleaner.CLEANING_WIDTH);
+                double cleaningWidth =Double.parseDouble(criteria.get(VacuumCleaner.CLEANING_WIDTH).toString());
             }
             return true;
         }

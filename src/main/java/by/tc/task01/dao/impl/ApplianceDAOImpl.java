@@ -15,10 +15,10 @@ public class ApplianceDAOImpl implements ApplianceDAO {
 
     @Override
     public <E> Appliance find(Criteria<E> criteria) {
-        try (BufferedReader reader = getReaderFromString("src\\main\\resources\\appliances_db.txt")) {
+        try (BufferedReader reader = getReader("src\\main\\resources\\appliances_db.txt")) {
             String correctString = getCorrectString(reader, criteria);
-            Properties properties = getPropertiesFromString(correctString);
-            String applianceName = getClassName(correctString);
+            Properties properties = getProperties(correctString);
+            String applianceName = criteria.getApplianceType();
             if (properties != null && !applianceName.isEmpty()) {
                 return ApplianceFactory.getAppliance(applianceName, properties);
             }
@@ -29,7 +29,7 @@ public class ApplianceDAOImpl implements ApplianceDAO {
         return null;
     }
 
-    private BufferedReader getReaderFromString(String filePath) throws FileNotFoundException {
+    private BufferedReader getReader(String filePath) throws FileNotFoundException {
         return new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
     }
 
@@ -37,11 +37,10 @@ public class ApplianceDAOImpl implements ApplianceDAO {
         String sub = str.split(SearchCriteria.Speakers.FREQUENCY_RANGE.toString() + '=')[1];
         int index = sub.indexOf(",");
         String[] numbers = sub.substring(0, index).split("-");
-        if(numbers.length > 1){
+        if (numbers.length > 1) {
             double first = Double.parseDouble(numbers[0]), second = Double.parseDouble(numbers[1]);
             return first <= value && value <= second;
-        }
-        else {
+        } else {
             return Double.parseDouble(numbers[0]) == value;
         }
 
@@ -65,22 +64,16 @@ public class ApplianceDAOImpl implements ApplianceDAO {
                 String applianceName = entry.getKey().getClass().getSimpleName();
                 if (!temp.contains(applianceName)) {
                     break;
-                }
-                else if (SearchCriteria.Speakers.FREQUENCY_RANGE.equals(entry.getKey())
+                } else if (SearchCriteria.Speakers.FREQUENCY_RANGE.equals(entry.getKey())
                         && temp.contains(SearchCriteria.Speakers.FREQUENCY_RANGE.toString())
-                        && checkRange(temp, Double.parseDouble(entry.getValue().toString())))
-                {
+                        && checkRange(temp, Double.parseDouble(entry.getValue().toString()))) {
                     count++;
-                }
-                else if (checkStringForConformity(entry, temp))
-                {
+                } else if (checkStringForConformity(entry, temp)) {
                     count++;
-                }
-                else {
+                } else {
                     break;
                 }
-                if (count == hashMap.size())
-                {
+                if (count == hashMap.size()) {
                     return temp;
                 }
             }
@@ -88,7 +81,7 @@ public class ApplianceDAOImpl implements ApplianceDAO {
         return null;
     }
 
-    private Properties getPropertiesFromString(String str) throws IOException {
+    private Properties getProperties(String str) throws IOException {
         if (str == null) {
             return null;
         }
@@ -98,10 +91,5 @@ public class ApplianceDAOImpl implements ApplianceDAO {
         properties.load(builder);
         return properties;
     }
-
-    private String getClassName(String str) {
-        return str == null ? null : str.split(":")[0].trim();
-
-
-    }
 }
+
