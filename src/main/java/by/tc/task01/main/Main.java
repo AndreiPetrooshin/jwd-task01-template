@@ -7,11 +7,14 @@ import by.tc.task01.entity.criteria.Criteria;
 import by.tc.task01.service.ApplianceService;
 import by.tc.task01.service.ServiceFactory;
 
-
 public class Main {
 
 
 	public static void main(String[] args) {
+
+		Integer i1 = 1024;
+		Integer i2 = 1024;
+		System.out.println(i2 == i1);
 
 		Appliance appliance;
 
@@ -115,10 +118,6 @@ public class Main {
 		appliance = service.find(refrigeratorCriteria);
 
 		PrintApplianceInfo.print(appliance);
-
-
-
-
 	}
 
 }

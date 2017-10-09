@@ -1,9 +1,7 @@
 package by.tc.task01.entity;
 
-import by.tc.task01.entity.criteria.SearchCriteria;
 
 import java.io.Serializable;
-import java.util.Properties;
 
 public class VacuumCleaner extends Appliance implements Serializable {
 
