@@ -23,7 +23,7 @@ public class OvenCreator implements Command {
         oven.setDepth(Integer.parseInt(properties.getProperty(
                 SearchCriteria.Oven.DEPTH.toString())));
         oven.setHeight(Double.parseDouble(properties.getProperty(
-                SearchCriteria.Oven.DEPTH.toString())));
+                SearchCriteria.Oven.HEIGHT.toString())));
         oven.setWidth(Double.parseDouble(properties.getProperty(
                 SearchCriteria.Oven.WIDTH.toString())));
         return oven;

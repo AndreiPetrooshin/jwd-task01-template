@@ -19,7 +19,7 @@ public class RefrigeratorCreator implements Command {
         refrigerator.setFreezerCapacity(Integer.parseInt(properties.getProperty(
                 SearchCriteria.Refrigerator.FREEZER_CAPACITY.toString())));
         refrigerator.setOverallCapacity(Double.parseDouble(properties.getProperty(
-                SearchCriteria.Refrigerator.FREEZER_CAPACITY.toString())));
+                SearchCriteria.Refrigerator.OVERALL_CAPACITY.toString())));
         refrigerator.setHeight(Integer.parseInt(properties.getProperty(
                 SearchCriteria.Refrigerator.HEIGHT.toString())));
         refrigerator.setWidth(Integer.parseInt(properties.getProperty(

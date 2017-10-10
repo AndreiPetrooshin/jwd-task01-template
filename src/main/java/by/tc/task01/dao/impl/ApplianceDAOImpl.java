@@ -15,19 +15,17 @@ import java.util.regex.Pattern;
 
 public class ApplianceDAOImpl implements ApplianceDAO {
 
-    private ApplianceDirector applianceDirector;
-
     @Override
     public <E> Appliance find(Criteria<E> criteria) {
 
         String filePath = "src\\main\\resources\\appliances_db.txt";
+        ApplianceDirector applianceDirector = new ApplianceDirector();
 
         try (BufferedReader reader = getReader(filePath)) {
 
             String correctString = getCorrectString(reader, criteria);
             Properties properties = getProperties(correctString);
             String applianceName = criteria.getApplianceType();
-            applianceDirector = new ApplianceDirector();
             if (properties != null && applianceName != null) {
                 Command command = applianceDirector.getCommand(applianceName);
                 return command.create(properties);
